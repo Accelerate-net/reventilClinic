@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #f1f7ff;
+  --color-brand-100: #e1eeff;
+  --color-brand-200: #c5ddff;
+  --color-brand-300: #98c2ff;
+  --color-brand-400: #5f9ef8;
+  --color-brand-500: #2f80ed;
+  --color-brand-600: #1463e0;
+  --color-brand-700: #0f4fbf;
+  --color-brand-800: #0d3f95;
+  --color-navy: #0b2a5b;
+  --color-ink: #50617d;
+  --color-mist: #f6faff;
+
+  --shadow-card: 0 10px 30px -12px rgb(20 99 224 / 0.18),
+    0 2px 6px -2px rgb(11 42 91 / 0.06);
+  --shadow-cta: 0 10px 24px -8px rgb(20 99 224 / 0.55);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-mist);
+  color: var(--color-ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold transition duration-200 active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply bg-brand-600 text-white shadow-cta hover:bg-brand-700;
+  }
+  .btn-outline {
+    @apply border border-brand-200 bg-white text-navy hover:border-brand-400 hover:bg-brand-50;
+  }
+  .btn-soft {
+    @apply min-h-10 border border-brand-200 bg-brand-50 px-5 text-brand-700 hover:bg-brand-100;
+  }
+  .card {
+    @apply rounded-3xl border border-brand-100 bg-white shadow-card;
+  }
+  .icon-badge {
+    @apply grid size-12 shrink-0 place-items-center rounded-full bg-brand-100 text-brand-600;
+  }
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-brand-600;
+  }
+  .h2 {
+    @apply text-[1.7rem] font-extrabold leading-tight tracking-tight text-navy sm:text-4xl;
+  }
+  .field {
+    @apply h-12 w-full rounded-xl border border-brand-100 bg-brand-50/70 px-4 text-base text-navy outline-none transition placeholder:text-ink/50 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100;
+  }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.dots {
+  background-image: radial-gradient(var(--color-brand-300) 1.500px, transparent 1.500px);
+  background-size: 14px 14px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-float { animation: none; }
+}
